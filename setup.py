@@ -4,10 +4,10 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
-    name="pb-renko",
+    name="pbrenko",
     version="0.0.1",
     description="Percent based Renko chart creator.",
-    py_modules=["pb-renko"],
+    py_modules=["pbrenko"],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
@@ -21,7 +21,7 @@ setup(
             "pytest>=3.7",
         ],
     },
-    url="https://github.com/aticio/pb-renko",
+    url="https://github.com/aticio/pbrenko",
     author="Özgür Atıcı",
     author_email="aticiozgur@gmail.com",
 )
