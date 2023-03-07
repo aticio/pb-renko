@@ -1,8 +1,10 @@
 # flake8: noqa
-class Renko:
+class PbRenko:
     """Renko initialization class
     """
     def __init__(self, percent, data):
         self.percent = percent
         self.data = data
-        print(self.percent)
+    
+    def create_pbrenko(self):
+        print("works")
