@@ -13,7 +13,7 @@ class PbRenko:
     
     def create_pbrenko(self):
         gap = float(self.data[0]) * self.percent / 100
-
+        print("gap:", gap, "d:", self.data[0])
         for i, d in enumerate(self.data):
             if i == 0:
                 if len(self.bricks) == 0:
@@ -48,11 +48,39 @@ class PbRenko:
                         else:
                             if self.low_wick == 0 or d < self.low_wick:
                                 self.low_wick = d
-                    print(gap)
+                    print("gap:", gap, "d:", d)
                     print(self.bricks)
-                    break
                 elif self.bricks[-1]["type"] == "down":
-                    print("fist down")
+                    if d < self.bricks[-1]["close"]:
+                        delta = self.bricks[-1]["close"] - d
+                        fcount = math.floor(delta / gap)
+                        if fcount != 0:
+                            if self.high_wick == 0:
+                                self.add_bricks("down", fcount, gap)
+                            else:
+                                self.add_bricks("down", fcount, gap, self.high_wick)
+                            self.high_wick = 0
+                            self.low_wick = 0
+                            gap = d * self.percent / 100
+                        else:
+                            if self.low_wick == 0 or d < self.low_wick:
+                                self.low_wick = d
+                    elif d > self.bricks[-1]["open"]:
+                        delta = d - self.bricks[-1]["open"]
+                        fcount = math.floor(delta / gap)
+                        if fcount != 0:
+                            if self.low_wick == 0:
+                                self.add_bricks("up", fcount, gap)
+                            else:
+                                self.add_bricks("up", fcount, gap, self.low_wick)
+                            self.low_wick = 0
+                            self.high_wick = 0
+                            gap = d * self.percent / 100
+                        else:
+                            if d > self.high_wick:
+                                self.high_wick = d
+                    print(self.bricks)
+                    print("gap:", gap, "d:", d)
                 else:
                     if d > self.bricks[-1]["close"]:
                         delta = d - self.bricks[-1]["close"]
@@ -66,6 +94,8 @@ class PbRenko:
                         if fcount != 0:
                             self.add_bricks("down", fcount, gap)
                             gap = d * self.percent / 100
+                    print(self.bricks)
+                    print("gap:", gap, "d:", d)
 
 
     def add_bricks(self, type, count, brick_size, wick=0):
