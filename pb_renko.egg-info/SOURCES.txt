@@ -1,7 +1,0 @@
-README.md
-setup.py
-pb_renko.egg-info/PKG-INFO
-pb_renko.egg-info/SOURCES.txt
-pb_renko.egg-info/dependency_links.txt
-pb_renko.egg-info/requires.txt
-pb_renko.egg-info/top_level.txt
