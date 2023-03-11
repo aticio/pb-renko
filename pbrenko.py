@@ -187,11 +187,11 @@ class PbRenko:
             count = count + 1
 
         ax.set_xlim(0, count * brick_width)
-        ax.set_ylim(min_val - brick_width, y_max + (y_max * 0.1))
+        ax.set_ylim(min_val - brick_width, y_max + (y_max * 0.02))
         ax.set_axisbelow(True)
         ax.get_xaxis().set_visible(False)
 
-        ticks = np.arange(min_val - brick_width, y_max + (y_max * 0.1), brick_width * 2)
+        ticks = np.arange(min_val - brick_width, y_max + (y_max * 0.02), brick_width * 2)
         plt.yticks(ticks)
         plt.grid(linestyle='--', color="#ccd8c0")
         plt.savefig("chart.png")
