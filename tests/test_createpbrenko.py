@@ -4,13 +4,15 @@ import requests
 BINANCE_URL = "https://api.binance.com/api/v3/klines"
 SYMBOL = "BTCUSDT"
 INTERVAL = "1d"
-PARAMS = {"symbol": SYMBOL, "interval": INTERVAL}
+LIMIT = 79
+PARAMS = {"symbol": SYMBOL, "interval": INTERVAL, "limit": LIMIT}
 
 
 def test_createpbrenko():
     response = requests.get(url=BINANCE_URL, params=PARAMS)
     data = response.json()
     close = [float(c[4]) for c in data]
+    close.pop()
 
-    pbrnk = PbRenko(1, close)
+    pbrnk = PbRenko(5.6, close)
     pbrnk.create_pbrenko()

@@ -13,6 +13,7 @@ class PbRenko:
         self.bricks = []
         self.low_wick = 0
         self.high_wick = 0
+        self.number_of_leaks = 0
     
     def create_pbrenko(self):
         gap = float(self.data[0]) * self.percent / 100
@@ -89,6 +90,7 @@ class PbRenko:
                         delta = d - self.bricks[-1]["close"]
                         fcount = math.floor(delta / gap)
                         if fcount != 0:
+
                             self.add_bricks("up", fcount, gap)
                             gap = d * self.percent / 100
                     if d < self.bricks[-1]["close"]:
@@ -110,6 +112,8 @@ class PbRenko:
         :param brick_size: brick size
         :type brick_size: float
         """
+        if type != self.bricks[-1]["type"] and count > 1:
+            self.number_of_leaks = self.number_of_leaks + 1 
         for i in range(count):
             if type == "up":
                 if self.bricks[-1]["type"] == "up" or self.bricks[-1]["type"] == "first":

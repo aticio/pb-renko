@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="pbrenko",
-    version="0.0.2",
+    version="0.0.3",
     description="Percent based Renko chart creator.",
     py_modules=["pbrenko"],
     classifiers=[
