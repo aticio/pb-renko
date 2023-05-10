@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: pbrenko
+Version: 0.0.3
+Summary: Percent based Renko chart creator.
+Home-page: https://github.com/aticio/pbrenko
+Author: Özgür Atıcı
+Author-email: aticiozgur@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+Provides-Extra: dev
+
+# pb-renko

@@ -5,7 +5,7 @@ from decimal import Decimal, getcontext
 BINANCE_URL = "https://api.binance.com/api/v3/klines"
 SYMBOL = "BTCUSDT"
 INTERVAL = "1d",
-LIMIT = 80
+LIMIT = 129
 PARAMS = {"symbol": SYMBOL, "interval": INTERVAL, "limit": LIMIT}
 
 
@@ -21,6 +21,7 @@ def test_findoptimumpercent():
         pbrnk.create_pbrenko()
         if pbrnk.number_of_leaks == 0:
             found_percentages.append(i)
+
 
     getcontext().prec = 1
     for i, k in enumerate(found_percentages):
